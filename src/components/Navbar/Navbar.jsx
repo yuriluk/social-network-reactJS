@@ -7,9 +7,12 @@ const Navbar = () => {
         <div className={s.item}>
             <a href="#">Profile</a>
         </div>
+
         <div className={s.item}>
             <a href="#">
-                Messages</a></div>
+                Messages</a>
+        </div>
+
         <div className={s.item}>
             <a href="#">
                 News
