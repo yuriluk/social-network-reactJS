@@ -1,16 +1,12 @@
 import React from 'react'
 import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
     return (
         <>
-            <div>
-                <img src="https://wallpapercave.com/wp/P42nRq2.jpg" alt=""/>
-            </div>
-            <div>
-                ava+description
-            </div>
+            <ProfileInfo/>
             <MyPosts/>
         </>
     )
