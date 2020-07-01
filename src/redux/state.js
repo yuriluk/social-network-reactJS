@@ -28,7 +28,7 @@ export const state = {
         friends: [
             {
                 id: 1,
-                name: 'Dimych'
+                name: 'Dima'
             },
             {
                 id: 2,
