@@ -1,0 +1,11 @@
+.friend {
+    width: 30px;
+    margin: 5px;
+}
+
+.circle {
+    background-color: yellow;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}

@@ -1,0 +1,15 @@
+
+.message{
+
+}
+
+.right{
+    align-self: flex-end;
+}
+
+.ava {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+

@@ -13,3 +13,12 @@
 a.activeLink {
     color: black;
 }
+
+.nav:nth-child(1){
+    margin-bottom: 20px;
+}
+
+
+.friends{
+
+}

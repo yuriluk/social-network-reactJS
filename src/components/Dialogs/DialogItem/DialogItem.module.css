@@ -1,0 +1,16 @@
+
+.dialog {
+    color: white;
+    padding: 10px;
+}
+
+.active {
+    color: gold;
+}
+
+.ava {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
