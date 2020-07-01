@@ -1,5 +1,4 @@
-export const state = {
-
+let state = {
     profilePage: {
         posts: [
             {id: 1, message: 'First post', likesCount: 15},
@@ -24,7 +23,7 @@ export const state = {
             {id: 4, name: 'Roma'}
         ],
     },
-    sideBar:{
+    sideBar: {
         friends: [
             {
                 id: 1,
@@ -40,8 +39,15 @@ export const state = {
             }
         ]
     }
-
 }
+
+export let addPost = (postMessage) => {
+    debugger
+    let newPost = {id: 10, message: postMessage, likesCount: 0}
+    state.profilePage.posts.push(newPost)
+}
+
+export default state
 
 
 
