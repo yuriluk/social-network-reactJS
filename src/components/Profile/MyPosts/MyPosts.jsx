@@ -8,12 +8,12 @@ const MyPosts = (props) => {
         .map(el => (<Post key={el.id} message={el.message} likesCount={el.likesCount}/>))
 
     let addPost = () => {
-        props.addPost(props.newPostText)
+        props.addPost()
     }
 
     let onPostChange = (event) => {
-        let newMessage = event.target.value
-        props.handleMessageChange(newMessage)
+        let text = event.target.value
+        props.updateNewPostText(text)
     }
 
     return (

@@ -44,17 +44,19 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
-    let newPost = {id: 10, message: postMessage, likesCount: 0}
+export let addPost = () => {
+    let newPost = {id: 10, message: state.profilePage.newPostText, likesCount: 0}
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
     rerenderEntireTree(state)
 }
 
-export let handleMessageChange = (newPostText) => {
-    state.profilePage.newPostText = newPostText
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
+
+window.state = state
 
 export default state
 
