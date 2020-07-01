@@ -7,7 +7,7 @@ export const state = {
             {id: 3, message: 'Third post', likesCount: 3},
             {id: 4, message: 'Forth post', likesCount: 5},
             {id: 5, message: 'Fifth post', likesCount: 85},
-            {id: 6, message: 'Sixth post', likesCount: 75},
+            {id: 6, message: 'Sixth post', likesCount: 75}
         ]
     },
     dialogsPage: {
