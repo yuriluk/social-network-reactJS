@@ -26,7 +26,7 @@ const Navbar = (props) => {
             </div>
 
             <div className={s.item}>
-                <Friends friends={props.state.friends}/>
+                <Friends friends={props.sideBar.friends}/>
             </div>
         </nav>
     )
