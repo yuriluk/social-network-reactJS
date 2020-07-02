@@ -18,19 +18,19 @@ let store = {
             newPostText: ''
         },
         dialogsPage: {
-            newMessageText: '',
-            messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'How are you'},
-                {id: 3, message: 'Yo'},
-                {id: 4, message: 'Ha-Ha'}
-            ],
             dialogs: [
                 {id: 1, name: 'Dimych'},
                 {id: 2, name: 'Andrey'},
                 {id: 3, name: 'Sveta'},
                 {id: 4, name: 'Roma'}
             ],
+            messages: [
+                {id: 1, message: 'Hi'},
+                {id: 2, message: 'How are you'},
+                {id: 3, message: 'Yo'},
+                {id: 4, message: 'Ha-Ha'}
+            ],
+            newMessageText: '',
         },
         sideBar: {
             friends: [
@@ -57,20 +57,6 @@ let store = {
     },
     subscribe(observer) {
         this._callSubscriber = observer
-    },
-
-    addMessage() {
-        let newPost = {
-            id: 10,
-            message: this._state.dialogsPage.newMessageText
-        }
-        this._state.dialogsPage.messages.push(newPost)
-        this._state.dialogsPage.newMessageText = ''
-        this._callSubscriber(this._state)
-    },
-    updateNewMessageText(newText) {
-        this._state.dialogsPage.newMessageText = newText
-        this._callSubscriber(this._state)
     },
 
     dispatch(action) {
