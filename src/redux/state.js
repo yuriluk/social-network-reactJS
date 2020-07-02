@@ -1,8 +1,8 @@
-export const ADD_POST = 'ADD_POST'
-export const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
+const ADD_POST = 'ADD_POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 
-export const ADD_MESSAGE = 'ADD_MESSAGE'
-export const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+const ADD_MESSAGE = 'ADD_MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
 
 let store = {
     _state: {
@@ -101,6 +101,24 @@ let store = {
             this._state.dialogsPage.newMessageText = action.newText
             this._callSubscriber(this._state)
         }
+    }
+}
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+export const updateNewPostActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: text
+    }
+}
+
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+
+export const updateNewMessageActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        newText: text
     }
 }
 
