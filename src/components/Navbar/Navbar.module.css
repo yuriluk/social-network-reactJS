@@ -5,6 +5,10 @@
     padding: 20px;
 }
 
+.item {
+  margin-bottom: 10px;
+}
+
 .item a{
     color: white;
     text-decoration: none;
