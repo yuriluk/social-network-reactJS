@@ -16,7 +16,7 @@ const Dialogs = (props) => {
     }
 
     let dialogsElements = props.dialogsPage.dialogs
-        .map(d => (<DialogItem key={d.id} name={d.name}/>))
+        .map(d => (<DialogItem key={d.id} id={d.id} name={d.name}/>))
 
     let messageElements = props.dialogsPage.messages
         .map(m => (<Message key={m.id} message={m}/>))
