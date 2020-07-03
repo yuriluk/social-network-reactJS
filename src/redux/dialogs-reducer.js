@@ -24,14 +24,22 @@ const dialogsReducer = (state = initialState, action) => {
                 id: 10,
                 message: state.newMessageText
             }
-            state.messages.push(newMessage)
-            state.newMessageText = ''
-            return state
+            let stateCopy = {
+                ...state,
+                newMessageText: ''
+            }
+            stateCopy.messages = [...state.messages]
+            stateCopy.messages.push(newMessage)
+
+            return stateCopy
         }
 
         case UPDATE_NEW_MESSAGE_TEXT: {
-            state.newMessageText = action.newText
-            return state
+            let stateCopy = {
+                ...state,
+                newMessageText: action.newText
+            }
+            return stateCopy
         }
         default:
             return state
@@ -48,3 +56,4 @@ export const updateNewMessageActionCreator = (text) => {
 }
 
 export default dialogsReducer
+
