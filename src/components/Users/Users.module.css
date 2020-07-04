@@ -1,2 +1,10 @@
+.page{
+    padding: 5px;
+}
+
+
+.selected{
+    font-weight: bold;
+}
 
 
