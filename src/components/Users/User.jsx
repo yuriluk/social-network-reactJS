@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './User.module.css'
+import userAva from '../../assets/img/avaSmall.jpg'
 
 const User = (props) => {
     return (
@@ -7,7 +8,7 @@ const User = (props) => {
 
             <div className={s.photoBlock}>
                 <div>
-                    <img src={props.user.photoUrl}
+                    <img src={props.user.photos.small ? props.user.photos.small : userAva }
                          alt={props.user.name}
                          className={s.userPhoto}/>
                 </div>
@@ -34,8 +35,8 @@ const User = (props) => {
                 </div>
 
                 <div className={s.countryBlock}>
-                    <div>{props.user.location.country}</div>
-                    <div> {props.user.location.city}</div>
+                    <div>{"props.user.location.country"}</div>
+                    <div> {"props.user.location.city"}</div>
                 </div>
             </div>
         </div>
