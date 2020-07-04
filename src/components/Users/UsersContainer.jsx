@@ -1,11 +1,10 @@
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-    followAC,
-    setCurrentPageAC, toggleIsFetchingAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    unfollowAC
+    follow,
+    setCurrentPage, toggleIsFetching,
+    setTotalUsersCount,
+    setUsers, unfollow
 } from "../../redux/users-reducer";
 import React, {Component} from "react";
 import * as axios from "axios";
@@ -64,28 +63,30 @@ const mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
+//
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) => {
+//             dispatch(follow(userId))
+//         },
+//         unfollow: (userId) => {
+//             dispatch(unfollow(userId))
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsers(users))
+//         },
+//         setCurrentPage: (page) => {
+//             dispatch(setCurrentPage(page))
+//         },
+//         setTotalUsersCount: (totalUsersCount) => {
+//             dispatch(setTotalUsersCount(totalUsersCount))
+//         },
+//         toggleIsFetching: (isFetching) => {
+//             dispatch(toggleIsFetching(isFetching))
+//         }
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (page) => {
-            dispatch(setCurrentPageAC(page))
-        },
-        setTotalUsersCount: (totalUsersCount) => {
-            dispatch(setTotalUsersCountAC(totalUsersCount))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
-    }
-}
+const actions = {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching}
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent)
+export default connect(mapStateToProps, actions)(UsersAPIComponent)
