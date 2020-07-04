@@ -23,7 +23,7 @@ const Users = (props) => {
         <div className={s.users}>
             <div>
                 {pages.map(page => {
-                    return <span className={props.currentPage === page ? (s.page + ' ' + s.selected) : s.page}
+                    return <span key={page} className={props.currentPage === page ? (s.page + ' ' + s.selected) : s.page}
                                  onClick={(e) => {
                                      props.onPageChange(page)
                                  }}>{page}</span>
