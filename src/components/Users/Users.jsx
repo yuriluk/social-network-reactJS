@@ -8,24 +8,27 @@ class Users extends Component {
     constructor(props) {
         super(props);
 
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            })
+        alert("Inside constructor. New Object")
     }
 
-    // componentDidMount() {
-    //     this.getUsers()
-    // }
-    //
-    // getUsers = () => {
-    //     if (this.props.users.length === 0) {
-    //         axios.get("https://social-network.samuraijs.com/api/1.0/users")
-    //             .then(response => {
-    //                 this.props.setUsers(response.data.items)
-    //             })
-    //     }
-    // }
+    componentDidMount() {
+        alert("Inside componentDidMount. New Object in DOM")
+        this.getUsers()
+    }
+
+    componentWillUnmount() {
+        alert("Inside componentWillUnmount. Object will be unmount")
+    }
+
+
+    getUsers = () => {
+        if (this.props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    this.props.setUsers(response.data.items)
+                })
+        }
+    }
 
 
     render() {
@@ -38,7 +41,6 @@ class Users extends Component {
 
         return (
             <div className={s.users}>
-                <button onClick={this.getUsers}>Get users</button>
                 {users}
             </div>
         )
