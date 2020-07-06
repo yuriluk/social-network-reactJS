@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import Footer from "../components/common/Footer/Footer";
+import Footer from "./components/common/Footer/Footer";
 import {Route} from "react-router-dom";
-import News from "../components/News/News";
-import Music from "../components/Music/Music";
-import Settings from "../components/Settings/Settings";
-import DialogsContainer from "../components/Dialogs/DialogsContainer";
-import NavbarContainer from "../components/common/Navbar/NavbarContainer";
-import UsersContainer from "../components/Users/UsersContainer";
-import ProfileContainer from "../components/Profile/ProfileContainer";
-import HeaderContainer from "../components/common/Header/HeaderContainer";
+import News from "./components/News/News";
+import Music from "./components/Music/Music";
+import Settings from "./components/Settings/Settings";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import NavbarContainer from "./components/common/Navbar/NavbarContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/common/Header/HeaderContainer";
 
 const App = () => {
     return (
