@@ -2,6 +2,7 @@ import React from 'react'
 import s from './User.module.css'
 import userAva from '../../assets/img/avaSmall.jpg'
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 const User = (props) => {
     return (
@@ -19,11 +20,36 @@ const User = (props) => {
                 <div>
                     {props.user.followed
                         ? <button onClick={() => {
-                            props.unfollow(props.user.id)
-                        }}>Follow</button>
-                        : <button onClick={() => {
-                            props.follow(props.user.id)
+
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.user.id}`, {
+                                withCredentials: true,
+                                headers: {
+                                    "API-KEY": "b1596819-273b-4180-99cf-faea78f5cd76"
+                                }
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.unfollow(props.user.id)
+                                    }
+                                })
+
                         }}>Unfollow</button>
+
+                        : <button onClick={() => {
+
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.user.id}`, {}, {
+                                withCredentials: true,
+                                headers:{
+                                    "API-KEY": "b1596819-273b-4180-99cf-faea78f5cd76"
+                                }
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.follow(props.user.id)
+                                    }
+                                })
+
+                        }}>Follow</button>
                     }
                 </div>
             </div>
