@@ -1,3 +1,6 @@
 .footer {
     height: 60px;
+
+    grid-area: f;
+    background-color: blueviolet;
 }
