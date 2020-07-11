@@ -12,7 +12,7 @@ const Dialogs = (props) => {
 
     let onMessageChange = (event) => {
         let text = event.target.value
-        props.messageChange(text)
+        props.updateNewMessage(text)
     }
 
     let dialogsElements = props.dialogsPage.dialogs
