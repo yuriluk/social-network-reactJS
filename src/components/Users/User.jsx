@@ -19,31 +19,19 @@ const User = (props) => {
                 </div>
                 <div>
                     {props.user.followed
-                        ? <button disabled={props.followingInProgress.some(i => i === props.user.id)} onClick={() => {
+                        ? <button disabled={props.followingInProgress.some(i => i === props.user.id)}
+                                  onClick={() => {
+                                      props.unfollow(props.user.id)
+                                  }}>
+                            Unfollow
+                        </button>
 
-                            props.toggleFollowingProgress(true, props.user.id)
-                            usersAPI.unFollow(props.user.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.unfollow(props.user.id)
-                                    }
-                                    props.toggleFollowingProgress(false, props.user.id)
-                                })
-
-                        }}>Unfollow</button>
-
-                        : <button disabled={props.followingInProgress.some(i => i === props.user.id)} onClick={() => {
-
-                            props.toggleFollowingProgress(true, props.user.id)
-                            usersAPI.follow(props.user.id)
-                                .then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.follow(props.user.id)
-                                    }
-                                    props.toggleFollowingProgress(false, props.user.id)
-                                })
-
-                        }}>Follow</button>
+                        : <button disabled={props.followingInProgress.some(i => i === props.user.id)}
+                                  onClick={() => {
+                                      props.follow(props.user.id)
+                                  }}>
+                            Follow
+                        </button>
                     }
                 </div>
             </div>

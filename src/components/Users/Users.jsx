@@ -16,7 +16,6 @@ const Users = (props) => {
         <User key={user.id} user={user}
               follow={props.follow}
               unfollow={props.unfollow}
-              toggleFollowingProgress={props.toggleFollowingProgress}
               followingInProgress={props.followingInProgress}
         />
     )

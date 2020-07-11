@@ -2,42 +2,23 @@ import {connect} from "react-redux";
 import Users from "./Users";
 import {
     follow,
+    getUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    setUsers, toggleFollowingProgress,
-    toggleIsFetching,
-    unfollow
+    toggleFollowingProgress, unFollow
 } from "../../redux/users-reducer";
 import React, {Component} from "react";
 import Preloader from "../common/Preloader/Preloader";
-import {usersAPI} from "../../api/api";
 
 class UsersAPIComponent extends Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        this.getUsers()
-
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
-    getUsers = () => {
-        usersAPI.getUsersApi(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
-
-    }
 
     onPageChange = (page) => {
+        this.props.getUsers(page, this.props.pageSize)
         this.props.setCurrentPage(page)
-
-        usersAPI.getUsersApi(page, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-            })
     }
 
     render() {
@@ -48,9 +29,8 @@ class UsersAPIComponent extends Component {
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
                    follow={this.props.follow}
-                   unfollow={this.props.unfollow}
+                   unfollow={this.props.unFollow}
                    onPageChange={this.onPageChange}
-                   toggleFollowingProgress={this.props.toggleFollowingProgress}
                    followingInProgress={this.props.followingInProgress}
             />
         </>
@@ -67,6 +47,7 @@ const mapStateToProps = (state) => {
         followingInProgress: state.usersPage.followingInProgress
     }
 }
-const callbacks = {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProgress}
 
-export default connect(mapStateToProps, callbacks)(UsersAPIComponent)
+export default connect(mapStateToProps, {
+    setCurrentPage, follow, unFollow, getUsers
+})(UsersAPIComponent)
