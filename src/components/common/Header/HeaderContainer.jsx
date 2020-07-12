@@ -28,7 +28,6 @@ const mapStateToProps = (state) => {
         isAuth: state.auth.isAuth,
         isFetching: state.auth.isFetching,
     }
-
 }
 
 export default connect(mapStateToProps, {getAuthUserData })(HeaderContainer)
