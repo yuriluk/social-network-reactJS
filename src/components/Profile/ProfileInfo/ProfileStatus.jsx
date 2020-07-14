@@ -30,14 +30,29 @@ class ProfileStatus extends Component {
         })
     }
 
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('componentDidUpdate')
+
+        if (prevProps.status !== this.props.status) {
+            this.setState(
+                {
+                    status: this.props.status
+                }
+            )
+        }
+    }
+
     render() {
+        console.log('render')
 
 
         return (
             <div>
                 {!this.state.editMode &&
                 <div>
-                    <p>My status: <span onDoubleClick={this.activateEditMode}>{this.props.status}</span></p>
+                    <p>My status: <span onDoubleClick={this.activateEditMode}>{this.state.status || 'Unknown'}</span>
+                    </p>
                 </div>
                 }
                 {this.state.editMode &&
