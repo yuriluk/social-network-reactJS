@@ -30,12 +30,32 @@ export const setAuthUserData = (userId, login, email) => ({type: SET_USER_DATA, 
 
 export const getAuthUserData = () => {
     return (dispatch) => {
-
         authAPI.me()
             .then(data => {
                 if (data.resultCode === 0) {
                     let {id, login, email} = data.data;
                     dispatch(setAuthUserData(id, login, email))
+                }
+            })
+    }
+}
+
+export const loginUser = (loginData) => {
+    return (dispatch) => {
+        authAPI.login(loginData)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    getAuthUserData()
+                }
+            })
+    }
+}
+export const logoutUser = () => {
+    return (dispatch) => {
+        authAPI.logout()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(setAuthUserData(null,null,null))
                 }
             })
     }
