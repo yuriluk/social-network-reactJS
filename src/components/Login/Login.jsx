@@ -3,7 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {loginUser, logoutUser} from "../../redux/auth-reducer";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {Input} from "../common/FormControls/FormControls";
 import {required} from "../../utils/validators/validators";
 
@@ -11,12 +11,12 @@ const Login = (props) => {
 
     const onSubmit = (formData) => {
         console.log(formData)
-        let {login, password, rememberMe} = formData
-        props.loginUser({
-            email: login,
-            password: password,
-            rememberMe: rememberMe
-        })
+        let {email, password, rememberMe} = formData
+        props.loginUser(email, password, rememberMe)
+    }
+
+    if (props.isAuth){
+        return <Redirect to={'/profile'}/>
     }
 
     return (
@@ -32,13 +32,13 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Login'} name={'login'}
+                <Field placeholder={'Email'} name={'email'}
                        component={Input}
                        validate={[required]}
                 />
             </div>
             <div>
-                <Field placeholder={'Password'} name={'password'}
+                <Field placeholder={'Password'} type='password' name={'password'}
                        component={Input}
                        validate={[required]}
                 />
@@ -53,18 +53,15 @@ const LoginForm = (props) => {
     )
 }
 
-const LoginReduxForm = reduxForm({
-    // a unique name for the form
-    form: 'login'
-})(LoginForm)
+const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const mapStateToProps = (state) => {
     return {
-        userId: state.auth.userId
+        isAuth: state.auth.isAuth
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {loginUser, logoutUser}),
+    connect(mapStateToProps, {loginUser}),
     withRouter
 )(Login)
