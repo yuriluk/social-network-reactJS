@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA'
 
@@ -24,8 +25,10 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (userId, login, email, isAuth) => ({type: SET_USER_DATA, payload:
-        {userId, login, email, isAuth}})
+export const setAuthUserData = (userId, login, email, isAuth) => ({
+    type: SET_USER_DATA, payload:
+        {userId, login, email, isAuth}
+})
 
 export const getAuthUserData = () => {
     return (dispatch) => {
@@ -44,6 +47,12 @@ export const loginUser = (email, password, rememberMe) => (dispatch) => {
         .then(data => {
             if (data.resultCode === 0) {
                 dispatch(getAuthUserData())
+            } else if (data.resultCode === 10) {
+                let message = 'You need enter captcha'
+                dispatch(stopSubmit("login", {_error: message}))
+            } else {
+                let message = data.messages.length > 0 ? data.messages[0] : 'Some error'
+                dispatch(stopSubmit("login", {_error: message}))
             }
         })
 }
