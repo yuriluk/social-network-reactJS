@@ -4,10 +4,13 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {loginUser, logoutUser} from "../../redux/auth-reducer";
 import {withRouter} from "react-router-dom";
+import {Input} from "../common/FormControls/FormControls";
+import {required} from "../../utils/validators/validators";
 
 const Login = (props) => {
 
     const onSubmit = (formData) => {
+        console.log(formData)
         let {login, password, rememberMe} = formData
         props.loginUser({
             email: login,
@@ -29,13 +32,19 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Login'} name={'login'} component={'input'}/>
+                <Field placeholder={'Login'} name={'login'}
+                       component={Input}
+                       validate={[required]}
+                />
             </div>
             <div>
-                <Field placeholder={'Password'} name={'password'} component={'input'}/>
+                <Field placeholder={'Password'} name={'password'}
+                       component={Input}
+                       validate={[required]}
+                />
             </div>
             <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={'input'}/> remember me
+                <Field type={'checkbox'} name={'rememberMe'} component={Input}/> remember me
             </div>
             <div>
                 <button>LogIn</button>
