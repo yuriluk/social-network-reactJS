@@ -10,8 +10,11 @@ class ProfileContainer extends Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if (!userId && this.props.isAuth) {
+        if (!userId) {
             userId = this.props.authorizedUserId
+            if (!userId){
+                this.props.history.push("/login")
+            }
         }
 
         this.props.getUserProfile(userId)
