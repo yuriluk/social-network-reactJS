@@ -24,6 +24,7 @@ class UsersContainer extends Component {
     }
 
     render() {
+        console.log('USERS render')
         return <>
             {this.props.isFetching ? <Preloader/> : null}
             <Users users={this.props.users}
@@ -51,6 +52,7 @@ class UsersContainer extends Component {
 // }
 
 const mapStateToProps = (state) => {
+    console.log("mstp USERS")
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
