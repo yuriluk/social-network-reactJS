@@ -40,30 +40,19 @@ class UsersContainer extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// }
-
 const mapStateToProps = (state) => {
     console.log("mstp USERS")
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
-        currentPage: getCurrentPage(state) ,
+        currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state)
     }
 }
 
 
-export default  compose(
+export default compose(
     connect(mapStateToProps, {follow, unFollow, requestUsers}),
 )(UsersContainer)
