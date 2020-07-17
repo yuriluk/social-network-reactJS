@@ -1,36 +1,30 @@
-import React, {PureComponent} from 'react'
+import React from 'react'
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormControls/FormControls";
 
-class MyPosts extends PureComponent {
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return nextProps != this.props || nextState != this.state
-    // }
+const MyPosts = React.memo(props => {
+    console.log("render posts")
 
-    render() {
-        console.log("render YO")
+    let postsElements = props.posts
+        .map(el => (<Post key={el.id} message={el.message} likesCount={el.likesCount}/>))
 
-        let postsElements = this.props.posts
-            .map(el => (<Post key={el.id} message={el.message} likesCount={el.likesCount}/>))
-
-        const onSubmit = (values) => {
-            this.props.addPost(values.newPostBody)
-        }
-
-        return (
-            <div className={s.postsBlock}>
-                <h3>My posts</h3>
-                <AddPostFormRedux onSubmit={onSubmit}/>
-                <div className={s.posts}>
-                    {postsElements}
-                </div>
-            </div>
-        )
+    const onSubmit = (values) => {
+        props.addPost(values.newPostBody)
     }
-}
+
+    return (
+        <div className={s.postsBlock}>
+            <h3>My posts</h3>
+            <AddPostFormRedux onSubmit={onSubmit}/>
+            <div className={s.posts}>
+                {postsElements}
+            </div>
+        </div>
+    )
+});
 
 const maxLength10 = maxLengthCreator(10)
 
