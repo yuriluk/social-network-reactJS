@@ -4,10 +4,9 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
     return {
-        profilePage: state.profilePage
+        posts: state.profilePage.posts
     }
 }
-
 
 const MyPostsContainer = connect(mapStateToProps, {addPost})(MyPosts)
 

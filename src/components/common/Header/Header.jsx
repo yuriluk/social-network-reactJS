@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 const Header = (props) => {
     const handleLogout = () => {
         props.logoutUser();
-        props.history.push("/")
     }
 
     return (
