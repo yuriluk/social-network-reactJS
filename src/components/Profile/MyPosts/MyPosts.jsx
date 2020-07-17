@@ -1,22 +1,17 @@
-import React from 'react'
+import React, {PureComponent} from 'react'
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormControls/FormControls";
 
-window.props = []
-
-class MyPosts extends React.Component {
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextProps != this.props || nextState != this.state
-    }
+class MyPosts extends PureComponent {
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return nextProps != this.props || nextState != this.state
+    // }
 
     render() {
         console.log("render YO")
-        window.props.push(this.props)
-
-        console.log(this.props)
 
         let postsElements = this.props.posts
             .map(el => (<Post key={el.id} message={el.message} likesCount={el.likesCount}/>))
