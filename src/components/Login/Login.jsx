@@ -1,5 +1,5 @@
 import React from 'react'
-import {Field, reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {loginUser} from "../../redux/auth-reducer";

@@ -13,10 +13,11 @@ const Users = ({totalUsersCount, pageSize, currentPage, onPageChange, users, ...
 
     return (
         <div className={s.users}>
-            <Pagination totalUsersCount={totalUsersCount}
+            <Pagination totalItemsCount={totalUsersCount}
                         pageSize={pageSize}
                         currentPage={currentPage}
-                        onPageChange={onPageChange}/>
+                        onPageChange={onPageChange}
+            />
 
             {usersView}
         </div>

@@ -3,17 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import MainApp from "./App";
 
-ReactDOM.render(
-        // <BrowserRouter>
-        //     <React.StrictMode>
-        //         <Provider store={store}>
-        //             <App/>
-        //         </Provider>
-        //     </React.StrictMode>
-        // </BrowserRouter>,
-        <MainApp />,
-        document.getElementById('root')
-    );
+ReactDOM.render(<MainApp/>, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change

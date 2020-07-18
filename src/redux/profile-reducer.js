@@ -1,4 +1,4 @@
-import {authAPI, profileAPI} from "../api/api";
+import { profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST'
 const DELETE_POST = 'DELETE_POST'

@@ -1,7 +1,14 @@
 .page{
     padding: 5px;
+    margin: 3px;
+    border: 1px solid gray;
 }
 
-.selected{
+.page.selected{
     font-weight: bold;
+    border-color: black;
+}
+
+.pagination{
+    margin: 10px;
 }
