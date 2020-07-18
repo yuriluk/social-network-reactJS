@@ -8,12 +8,10 @@ class ProfileStatus extends Component {
     }
 
     activateEditMode = () => {
-        console.log("this: ", this.state.editMode)
         this.setState({
                 editMode: true
             }
         )
-        // console.log (this.state.editMode)
     }
 
     deactivateEditMode = () => {
@@ -32,7 +30,6 @@ class ProfileStatus extends Component {
 
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('componentDidUpdate')
 
         if (prevProps.status !== this.props.status) {
             this.setState(
@@ -45,7 +42,6 @@ class ProfileStatus extends Component {
 
     render() {
         console.log('render')
-
 
         return (
             <div>
