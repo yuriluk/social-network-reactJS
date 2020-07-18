@@ -6,14 +6,16 @@ import App from "./App";
 import store from "./redux/redux-store";
 import {Provider} from "react-redux";
 
-ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    </BrowserRouter>,
-    document.getElementById('root')
-);
+    ReactDOM.render(
+        <BrowserRouter>
+            <React.StrictMode>
+                <Provider store={store}>
+                    <App/>
+                </Provider>
+            </React.StrictMode>
+        </BrowserRouter>,
+        document.getElementById('root')
+    );
 
 
 // If you want your app to work offline and load faster, you can change

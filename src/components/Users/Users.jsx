@@ -1,39 +1,24 @@
 import React from 'react'
 import s from './Users.module.css'
 import User from "./User";
+import Pagination from "../common/Pagination/Pagination";
 
-const Users = (props) => {
+const Users = ({totalUsersCount, pageSize, currentPage, onPageChange, users, ...props}) => {
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-
-    let pages = []
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-
-    let users = props.users.map(user =>
-        <User key={user.id} user={user}
-              follow={props.follow}
-              unfollow={props.unfollow}
-              followingInProgress={props.followingInProgress}
-        />
+    const usersView = users.map(user => <User key={user.id} user={user}
+                                              follow={props.follow}
+                                              unfollow={props.unfollow}
+                                              followingInProgress={props.followingInProgress}/>
     )
-
 
     return (
         <div className={s.users}>
-            <div>
-                {pages.map(page => {
-                    return <span key={page} className={props.currentPage === page ? (s.page + ' ' + s.selected) : s.page}
-                                 onClick={(e) => {
-                                     props.onPageChange(page)
-                                 }}>{page}</span>
-                })}
-            </div>
+            <Pagination totalUsersCount={totalUsersCount}
+                        pageSize={pageSize}
+                        currentPage={currentPage}
+                        onPageChange={onPageChange}/>
 
-
-            {users}
+            {usersView}
         </div>
     )
 }

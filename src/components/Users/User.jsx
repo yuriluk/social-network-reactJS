@@ -3,31 +3,31 @@ import s from './User.module.css'
 import userAva from '../../assets/img/avaSmall.jpg'
 import {NavLink} from "react-router-dom";
 
-const User = (props) => {
+const User = ({user, follow, unfollow, followingInProgress}) => {
     return (
         <div className={s.user}>
 
             <div className={s.photoBlock}>
                 <div>
-                    <NavLink to={'/profile/' + props.user.id}>
-                        <img src={props.user.photos.small ? props.user.photos.small : userAva}
-                             alt={props.user.name}
+                    <NavLink to={'/profile/' + user.id}>
+                        <img src={user.photos.small ? user.photos.small : userAva}
+                             alt={user.name}
                              className={s.userPhoto}/>
                     </NavLink>
 
                 </div>
                 <div>
-                    {props.user.followed
-                        ? <button disabled={props.followingInProgress.some(i => i === props.user.id)}
+                    {user.followed
+                        ? <button disabled={followingInProgress.some(i => i === user.id)}
                                   onClick={() => {
-                                      props.unfollow(props.user.id)
+                                      unfollow(user.id)
                                   }}>
                             Unfollow
                         </button>
 
-                        : <button disabled={props.followingInProgress.some(i => i === props.user.id)}
+                        : <button disabled={followingInProgress.some(i => i === user.id)}
                                   onClick={() => {
-                                      props.follow(props.user.id)
+                                      follow(user.id)
                                   }}>
                             Follow
                         </button>
@@ -38,17 +38,17 @@ const User = (props) => {
             <div className={s.info}>
                 <div className={s.nameBlock}>
                     <div>
-                        {props.user.name}
+                        {user.name}
                     </div>
                     <div>
-                        {props.user.status}
+                        {user.status}
                     </div>
                 </div>
 
-                <div className={s.countryBlock}>
-                    <div>{"props.user.location.country"}</div>
-                    <div> {"props.user.location.city"}</div>
-                </div>
+                {/*<div className={s.countryBlock}>*/}
+                {/*    <div>{"props.user.location.country"}</div>*/}
+                {/*    <div> {"props.user.location.city"}</div>*/}
+                {/*</div>*/}
             </div>
         </div>
     )

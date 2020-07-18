@@ -16,15 +16,16 @@ import {
 class UsersContainer extends Component {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage, pageSize} = this.props
+        this.props.requestUsers(currentPage, pageSize)
     }
 
     onPageChange = (page) => {
-        this.props.requestUsers(page, this.props.pageSize)
+        const {pageSize} = this.props
+        this.props.requestUsers(page, pageSize)
     }
 
     render() {
-        console.log('USERS render')
         return <>
             {this.props.isFetching ? <Preloader/> : null}
             <Users users={this.props.users}
@@ -41,7 +42,6 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("mstp USERS")
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
