@@ -44,11 +44,6 @@ const User = ({user, follow, unfollow, followingInProgress}) => {
                         {user.status}
                     </div>
                 </div>
-
-                {/*<div className={s.countryBlock}>*/}
-                {/*    <div>{"props.user.location.country"}</div>*/}
-                {/*    <div> {"props.user.location.city"}</div>*/}
-                {/*</div>*/}
             </div>
         </div>
     )
